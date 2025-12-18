@@ -22,7 +22,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('home', [HomeController::class, 'home'])->name('home');
-        Route::post('approval-rejection', [HomeController::class, 'userApproval'])->name('userPass');
+        Route::post('approval-rejection', [HomeController::class, 'userApproval'])->name('userApprove');
 
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     });

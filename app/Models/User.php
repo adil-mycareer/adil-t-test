@@ -49,4 +49,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // public function getImageAttribute()
+    // {
+    //     if($this->image) {
+    //         return Storage::url($this->image);
+    //     }
+    //     return null;
+    // }
 }
