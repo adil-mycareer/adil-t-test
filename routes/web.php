@@ -35,9 +35,7 @@ Route::middleware('auth:web')->group(function () {
 Route::middleware('auth:web_tenant')->group(function () {
     Route::prefix('user')->as('user.')->group(function () {
         Route::get('profile', [ProfileController::class, 'show'])->name('profile');
-        Route::get('edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::post('update-profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::get('change-password', [ProfileController::class, 'showChangePassword'])->name('changePassword.show');
         Route::post('change-password', [ProfileController::class, 'UpdateChangePassword'])->name('changePassword.update');
 
         Route::get('logout', [UsersLoginController::class, 'logout'])->name('logout');

@@ -22,14 +22,13 @@ class LoginController extends Controller
     {
         try {
             $credentials = $request->validated();
+            $credentials['status'] = 1;
 
             if (!Auth::guard('web_tenant')->attempt($credentials)) {
-                return back()->withErrors([
-                    'email' => 'Invalid credentials'
-                ]);
+                return back()->withErrors('Invalid credentials');
             }
 
-            // $request->session()->regenerate();
+            $request->session()->regenerate();
 
             return redirect()->route('user.profile');
         } catch (\Throwable $th) {

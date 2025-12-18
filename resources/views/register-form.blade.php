@@ -31,7 +31,7 @@
         @endif
 
         <h2>User Register</h2>
-        <form action="{{ route('user.registerStore') }}" method="POST", enctype="multipart/form-data">
+        <form action="{{ route('user.registerStore') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name:</label>
