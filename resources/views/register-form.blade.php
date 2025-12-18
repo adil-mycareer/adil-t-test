@@ -56,8 +56,8 @@
             </div>
 
             <div class="form-group">
-                <label for="">Captcha:</label>
-                <input type="text" class="form-control" id="" name="captcha">
+                <label for="captcha">Captcha: What is {{ $num1 }} + {{ $num2 }} ?</label>
+                <input type="text" class="form-control" id="captcha" name="captcha">
             </div>
 
             <button type="submit" class="btn btn-info">Submit</button>

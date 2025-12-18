@@ -26,7 +26,15 @@ class RegisterUserRequest extends FormRequest
             'email' => 'required|email|unique:mysql_user.users',
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
-            'profile_image' => 'nullable|image|mimes:png,jpg,jpeg'
+            'profile_image' => 'nullable|image|mimes:png,jpg,jpeg',
+            'captcha' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if ($value != session('captcha_answer')) {
+                        $fail('Invalid captcha.');
+                    }
+                }
+            ],
         ];
     }
 }

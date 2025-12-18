@@ -15,7 +15,15 @@ class RegisterController extends Controller
     public function showRegister()
     {
         try {
-            return view('register-form');
+
+            $num1 = rand(1, 9);
+            $num2 = rand(1, 9);
+
+            session([
+                'captcha_answer' => $num1 + $num2
+            ]);
+
+            return view('register-form', compact('num1', 'num2'));
         } catch (\Throwable $th) {
             info($th->getMessage());
         }
@@ -24,12 +32,12 @@ class RegisterController extends Controller
     public function storeRegister(RegisterUserRequest $request)
     {
         try {
-            DB::transaction(function () use($request) {
+            DB::transaction(function () use ($request) {
                 $path = '';
-                if($request->hasFile('profile_image')) {
+                if ($request->hasFile('profile_image')) {
                     $file = $request->file('profile_image');
                     $extension = $file->extension();
-                    $fileName = Str::uuid().$extension;
+                    $fileName = Str::uuid() . $extension;
 
                     $path = $file->storeAs('profile', $fileName, 'public');
                 }
@@ -41,6 +49,8 @@ class RegisterController extends Controller
                     'image' => $path,
                     'status' => 0
                 ]);
+
+                session()->forget('captcha_answer');
             });
 
             return redirect()->back()->with('message', 'User registered.');
