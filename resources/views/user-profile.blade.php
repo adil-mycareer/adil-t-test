@@ -76,6 +76,9 @@
                 </div>
                 <button type="submit" class="btn btn-info">Change Password</button>
             </form>
+            <br><br>
+            <h4>Scan QR for user email</h4>
+            {!! QrCode::size(200)->generate(auth()->user()->email) !!}
         @endif
     </div>
 
