@@ -76,6 +76,17 @@ php artisan migrate --path=database/migrations/users/2025_12_18_084409_create_us
 
 ---
 
+## Admin Login Credentials
+
+Use the following default admin credentials to log in after setup:
+
+* **Email:** [admin@gmail.com](mailto:admin@gmail.com)
+* **Password:** 12345678
+
+> ⚠️ **Security Note:** Please change these credentials immediately in production environments.
+
+---
+
 ## Final Notes
 
 * Ensure the correct database connection is configured for multiple databases
