@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class ProfileRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +21,10 @@ class ProfileRequest extends FormRequest
      */
     public function rules(): array
     {
-        $userId = Auth::id();
         return [
-            'name' => 'required',
-            'email' => 'required|email|unique:mysql_user.users,email,'.$userId.',id',
-            'profile_image' => 'nullable|image|mimes:png,jpg,jpeg'
+            'current_password' => 'required|current_password',
+            'new_password' => 'required|min:6',
+            'confirm_password' => 'required|same:new_password',
         ];
     }
 }

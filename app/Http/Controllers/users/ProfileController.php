@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\users;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -33,7 +35,8 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         try {
-            $user = User::findOrFail((int) $request->user_id);
+
+            $user = Auth::guard('web_tenant')->user();
 
             DB::transaction(function () use ($request, $user) {
 
@@ -70,11 +73,20 @@ class ProfileController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function updatePassword(ChangePasswordRequest $request)
     {
-        //
+        try {
+            $user = Auth::guard('web_tenant')->user();
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            return back()->with('message', 'Password updated successfully');
+        } catch (\Throwable $th) {
+            info($th->getMessage());
+
+            return redirect()
+                ->route('user.profile')
+                ->withErrors('Something went wrong');
+        }
     }
 }

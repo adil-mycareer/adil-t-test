@@ -34,12 +34,11 @@
             <p>User logout</p>
         </a>
         @if ($user)
-            <form action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
+            <form id="form1" action="{{ route('user.profile.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="hidden" name="user_id" value="{{ $user->id }}">
                     <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="{{ $user->name }}">
                 </div>
                 <div class="form-group">
@@ -61,15 +60,15 @@
 
             <hr>
 
-            <form action="{{ route('user.changePassword.update') }}" method="POST">
+            <form id="form2" action="{{ route('user.password.update') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="pwd">Current Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="current_password">
                 </div>
                 <div class="form-group">
                     <label for="pwd">New Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="new_password">
                 </div>
                 <div class="form-group">
                     <label for="conf-pwd">Confirm Password:</label>
