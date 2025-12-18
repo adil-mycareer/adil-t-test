@@ -66,6 +66,10 @@
             Are you admin?
             <a href="{{ route('admin.login.show') }}">Admin Login</a>
         </p>
+        <p class="mt-3">
+            User login?
+            <a href="{{ route('UserLogin.show') }}">User Login</a>
+        </p>
     </div>
 
 </body>

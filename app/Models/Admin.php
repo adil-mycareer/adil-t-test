@@ -11,6 +11,8 @@ class Admin extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $connection = 'mysql_admin';
+
     protected $fillable = [
         'name',
         'email',
