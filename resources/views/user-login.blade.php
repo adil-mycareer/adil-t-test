@@ -3,44 +3,53 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,
+    <meta name="viewport"
+          content="width=device-width,
                    initial-scale=1,
                    shrink-to-fit=no" />
-    <link rel="stylesheet" href=
+    <link rel="stylesheet"
+          href=
 "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <title>Adil Test | Admin Login</title>
+    <title>Adil Test</title>
 </head>
 
 <body>
     <h1 class="text-success text-center">
-        Admin Login Form
+        GeeksforGeeks
     </h1>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <form id="registrationForm" action="{{ route('admin.login') }}" method="POST">
-                            @csrf
+                        <form id="registrationForm" action="">
                             <div class="form-group">
                                 <label for="email">
                                     Email
                                 </label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Email" required />
+                                <input type="email"
+                                       class="form-control"
+                                       id="email"
+                                       placeholder="Email" required />
                             </div>
                             <div class="form-group">
                                 <label for="password">
                                     Password
                                 </label>
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required />
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       placeholder="Password"
+                                    required />
                             </div>
                             <button class="btn btn-danger">
                                 Login
                             </button>
                         </form>
                         <p class="mt-3">
-                            Register User?
-                            <a href="{{ route('user.registerForm') }}">Create an account</a>
+                            Not registered?
+                            <a href="#">Create an
+                                account</a>
                         </p>
                     </div>
                 </div>
